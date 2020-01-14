@@ -22,6 +22,7 @@ module "linuxservers" {
   resource_group_name           = var.resource_group_name
   location                      = var.location
   vm_hostname                   = local.vm_hostname
+  vm_size                       = var.vm_size
   nb_public_ip                  = 1
   public_ip_dns                 = [local.vm_hostname]
   remote_port                   = 22
@@ -29,6 +30,7 @@ module "linuxservers" {
   vm_os_publisher               = "Canonical"
   vm_os_offer                   = "UbuntuServer"
   vm_os_sku                     = "16.04-LTS"
+  ssh_key                       = var.ssh_key
   vnet_subnet_id                = data.azurerm_subnet.compute_subnet.id
   boot_diagnostics              = false
   delete_os_disk_on_termination = true
